@@ -21,10 +21,11 @@
       "dom"
     ],
     "paths": {
-      "@billboard/*": ["./src/app/billboard/*"],
-      "@core/*": ["./src/app/core/*"],
-      "@home/*": ["./src/app/home/*"],
-      "@shared/*": ["./src/app/shared/*"]
+      "@billboard/*": ["./src/app/modules/pages/modules/billboard/*"],
+      "@core/*": ["./src/app/modules/core/*"],
+      "@home/*": ["./src/app/modules/pages/modules/home/*"],
+      "@pages/*": ["./src/app/modules/pages/*"],
+      "@shared/*": ["./src/app/modules/shared/*"]
     }
   },
   "angularCompilerOptions": {
