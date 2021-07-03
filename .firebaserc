@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "board-blip": {
+      "hosting": {
+        "board-blip": [
+          "board-blip"
+        ]
+      }
+    }
+  }
+}
