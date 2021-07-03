@@ -1,12 +1,11 @@
-
 $theme-colors: (
-    "primary": #C6CDBD,
-    "secondary": #CDD5E8,
-    "light": #F4F5F4,
-    "info": #E6ECFA,
-    "success": #3AA27F,
-    "danger": #C97C68
+  "primary": #3aa27f,
+  "secondary": #c6cdbd,
+  "light": #f4f5f4,
+  "info": #e6ecfa,
+  "success": #3aa27f,
+  "danger": #c97c68
 );
 
-
-$body-color: #333434;
+$font-color: #333434;
+$body-color: $font-color;

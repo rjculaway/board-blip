@@ -2,4 +2,19 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "./theme";
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  font-size: 0.875rem;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -1,6 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1053" height="235" viewBox="0 0 1053 235">
-  <g id="Group_2" data-name="Group 2" transform="translate(-760 -390)">
-    <text id="BoardBlip" transform="translate(760 390)" fill="#333434" font-size="235" font-family="Helvetica-Light, Helvetica" font-weight="300"><tspan x="6.328" y="181">BoardBlip</tspan></text>
-    <circle id="Ellipse_8" data-name="Ellipse 8" cx="22" cy="22" r="22" transform="translate(1615 392)" fill="#c6cdbd"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1053" height="259" viewBox="0 0 1053 259">
+  <text id="BoardBlip" transform="translate(0 24)" fill="#333434" font-size="235" font-family="Helvetica-Light, Helvetica" font-weight="300"><tspan x="6.328" y="181">BoardBlip</tspan></text>
+  <circle id="Ellipse_8" data-name="Ellipse 8" cx="34.5" cy="34.5" r="34.5" transform="translate(849)" fill="#57af92"/>
 </svg>
