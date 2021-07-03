@@ -15,11 +15,17 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2017",
-    "module": "es2020",
+    "module": "esnext",
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@billboard/*": ["./src/app/billboard/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@home/*": ["./src/app/home/*"],
+      "@shared/*": ["./src/app/shared/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

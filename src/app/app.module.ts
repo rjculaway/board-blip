@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CoreModule } from './core/core.module';
+
+import { httpClientProvider } from '@core/services/http-client/http-client.factory';
 
 @NgModule({
   declarations: [
@@ -12,9 +15,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    CoreModule
   ],
-  providers: [],
+	providers: [
+		httpClientProvider
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
