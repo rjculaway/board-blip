@@ -38,7 +38,8 @@
               transition: max-width 0.5s;
             }
 
-            &:hover {
+            &:hover,
+            &.active {
               &::after {
                 max-width: 100%;
               }

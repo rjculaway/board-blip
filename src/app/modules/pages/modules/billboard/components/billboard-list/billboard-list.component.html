@@ -1,1 +1,15 @@
-<p>billboard-list works!</p>
+<div class="list-group list-group-flush">
+  <button
+    *ngFor="let billboard of billboards"
+    class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
+  >
+    <div class="ms-2 me-auto">
+      <img class="billboard-icon" [src]="billboard.type" />
+      {{ billboard.name }}
+    </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <img class="map-pin-icon" src="assets/icons/map-pin.svg" />
+      {{ billboard.locationCount }}
+    </div>
+  </button>
+</div>

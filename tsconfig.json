@@ -20,11 +20,16 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "*": ["types/*"],
+      "@environment/*": ["./src/environments/*"],
       "@billboard/*": ["./src/app/modules/pages/modules/billboard/*"],
       "@core/*": ["./src/app/modules/core/*"],
       "@home/*": ["./src/app/modules/pages/modules/home/*"],
       "@pages/*": ["./src/app/modules/pages/*"],
-      "@shared/*": ["./src/app/modules/shared/*"]
+      "@shared/*": ["./src/app/modules/shared/*"],
+
+      "@classes/*": ["./src/app/models/classes/*.ts"],
+      "@interfaces/*": ["./src/app/models/interfaces/*.ts"],
+      "@enums/*": ["./src/app/models/enums/*.ts"]
     }
   },
   "angularCompilerOptions": {

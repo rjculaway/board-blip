@@ -1,37 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
-import { HttpRequestOptions } from '@core/interfaces/http-request-options';
-
+import { HttpRequestOptions } from "@interfaces/http-request-options";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class HttpClientService {
-	private readonly BASE_URL = 'https://test.greenkoncepts.com/gktest/';
+  private options: HttpRequestOptions = {};
 
-	private options: HttpRequestOptions = {};
+  constructor(private httpClient: HttpClient) {}
 
-	constructor(private httpClient: HttpClient) { }
+  public Get<T>(endPoint: string, options?: HttpRequestOptions): Observable<T> {
+    if (!options) {
+      options = this.options;
+    }
 
-	getBaseUrl(endPoint: string): string {
-		return `${this.BASE_URL}${endPoint}`;
-	}
+    return this.httpClient.get<T>(endPoint, options);
+  }
 
-	public Get<T>(endPoint: string, options?: HttpRequestOptions): Observable<T> {
-		if (!options) {
-			options = this.options;
-		}
+  public Post<T>(
+    endPoint: string,
+    params: any,
+    options?: HttpRequestOptions
+  ): Observable<T> {
+    if (!options) {
+      options = this.options;
+    }
 
-		return this.httpClient.get<T>(endPoint, options);
-	}
-
-	public Post<T>(endPoint: string, params: any, options?: HttpRequestOptions): Observable<T> {
-		if (!options) {
-			options = this.options;
-		}
-
-		return this.httpClient.post<T>(endPoint, params, options);
-	}
+    return this.httpClient.post<T>(endPoint, params, options);
+  }
 }

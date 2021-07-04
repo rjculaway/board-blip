@@ -3,7 +3,8 @@ import {
   AngularFirestore,
   AngularFirestoreCollection
 } from "@angular/fire/firestore";
-import { Billboard } from "@core/interfaces/billboard";
+
+import { Billboard } from "@interfaces/billboard";
 
 @Injectable({
   providedIn: "root"
