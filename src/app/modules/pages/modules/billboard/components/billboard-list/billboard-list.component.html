@@ -1,15 +1,17 @@
 <div class="list-group list-group-flush">
-  <button
+  <div
     *ngFor="let billboard of billboards"
-    class="list-group-item list-group-item-action d-flex justify-content-between align-items-start"
+    routerLinkActive="active"
+    [routerLink]="[billboard.id]"
+    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
   >
-    <div class="ms-2 me-auto">
+    <div class="d-flex align-items-center">
       <img class="billboard-icon" [src]="billboard.type" />
-      {{ billboard.name }}
+      <span>{{ billboard.name }}</span>
     </div>
     <div class="d-flex align-items-center justify-content-between">
       <img class="map-pin-icon" src="assets/icons/map-pin.svg" />
-      {{ billboard.locationCount }}
+      <span>{{ billboard.locationCount }}</span>
     </div>
-  </button>
+  </div>
 </div>

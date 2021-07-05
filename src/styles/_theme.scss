@@ -1,11 +1,14 @@
+@import "./variables";
+
 $theme-colors: (
-  "primary": #3aa27f,
-  "secondary": #c6cdbd,
-  "light": #f4f5f4,
-  "info": #e6ecfa,
-  "success": #3aa27f,
-  "danger": #c97c68
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "info": $info,
+  "success": $success,
+  "danger": $danger
 );
 
-$font-color: #333434;
 $body-color: $font-color;
+$headings-font-family: $font-monospace;
+$font-family-sans-serif: $font-sans-serif;

@@ -20,6 +20,8 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "*": ["types/*"],
+
+      "@scss/variables": ["./src/variables.scss"],
       "@environment/*": ["./src/environments/*"],
       "@billboard/*": ["./src/app/modules/pages/modules/billboard/*"],
       "@core/*": ["./src/app/modules/core/*"],

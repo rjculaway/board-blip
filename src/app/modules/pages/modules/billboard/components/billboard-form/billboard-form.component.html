@@ -1,0 +1,53 @@
+<div
+  class="min-box-height"
+  [ngClass]="{ 'd-flex justify-content-center align-items-center': !billboard }"
+>
+  <ng-container *ngIf="billboard; else createBillboard">
+    <div [formGroup]="formGroup">
+      <h3 class="display-4">
+        <input
+          type="text"
+          class="form-control-plaintext text-center"
+          formControlName="name"
+          placeholder="Name your billboard"
+        />
+      </h3>
+
+      <div class="d-flex justify-content-center">
+        <label>
+          <input type="radio" [value]="false" formControlName="isElectronic" />
+          <div class="d-flex align-items-center">
+            <span class="mr-3 d-none d-sm-block">Traditional Billboard</span>
+            <img [src]="traditionalBillboard" />
+          </div>
+        </label>
+
+        <label>
+          <input type="radio" [value]="true" formControlName="isElectronic" />
+          <div class="d-flex align-items-center">
+            <img [src]="electronicBillboard" />
+            <span class="ml-3 d-none d-sm-block">Electronic Billboard</span>
+          </div>
+        </label>
+      </div>
+
+      <div class="images" formArrayName="images">
+        <ng-container
+          *ngFor="let image of images.controls; index as imageIndex"
+        >
+          <label>
+            <input type="hidden" [formControlName]="imageIndex" />
+            <input type="file" />
+            <div [style.background-image]="'url(' + image.value + ')'"></div>
+          </label>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #createBillboard>
+    <button type="button" class="btn btn-primary btn-lg rounded-0">
+      Create a Billboard
+    </button>
+  </ng-template>
+</div>

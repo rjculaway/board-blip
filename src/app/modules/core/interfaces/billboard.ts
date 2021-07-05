@@ -1,7 +1,6 @@
 export interface Billboard {
-  id: string;
   name: string;
   isElectronic: boolean;
-  locations: Array<Location>;
+  locations: Array<any>;
   images: Array<string>;
 }

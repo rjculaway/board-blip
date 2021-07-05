@@ -1,11 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
+@import "./utilities";
+@import "./fonts";
 @import "./theme";
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+
+  & input {
+    &::placeholder {
+      color: #cdcdcd;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+    }
+  }
 }
 
 ul,
@@ -17,4 +30,13 @@ a {
   &:hover {
     text-decoration: none;
   }
+}
+
+button {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.form-control-plaintext {
+  border-bottom: 1px solid var(--light);
 }

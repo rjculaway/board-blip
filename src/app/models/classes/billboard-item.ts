@@ -4,10 +4,9 @@ import { BillboardType } from "@enums/billboard-type";
 export class BillboardItem implements Billboard {
   id: string;
   name: string;
-  isDigital: boolean;
+  isElectronic: boolean;
   locations: Array<Location>;
-  slideIntervalInSeconds: number;
-  slides: string[];
+  images: string[];
 
   type: BillboardType;
   locationCount: number;
@@ -15,25 +14,23 @@ export class BillboardItem implements Billboard {
   constructor({
     id,
     name,
-    isDigital,
+    isElectronic,
     locations,
-    slideIntervalInSeconds,
-    slides
+    images
   }: Billboard) {
     this.id = id;
     this.name = name;
-    this.isDigital = isDigital;
+    this.isElectronic = isElectronic;
     this.locations = locations;
-    this.slideIntervalInSeconds = slideIntervalInSeconds;
-    this.slides = slides;
+    this.images = images;
 
     this.setBillboardType();
     this.setLocationCount();
   }
 
   private setBillboardType() {
-    this.type = this.isDigital
-      ? BillboardType.Digital
+    this.type = this.isElectronic
+      ? BillboardType.Electronic
       : BillboardType.Traditional;
   }
 

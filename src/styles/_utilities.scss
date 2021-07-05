@@ -1,0 +1,27 @@
+.min-box-height {
+  min-height: calc(
+    100vh - (80px + 1rem)
+  ); // 100vh - (header height + header bottom margin)
+}
+
+@mixin underline {
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 1.25rem;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    max-width: 0%;
+    background-color: var(--primary);
+    transition: max-width 0.5s;
+  }
+
+  &:hover,
+  &.active {
+    &::after {
+      max-width: 100%;
+    }
+  }
+}

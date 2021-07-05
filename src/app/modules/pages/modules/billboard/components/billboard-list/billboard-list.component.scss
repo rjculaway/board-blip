@@ -7,3 +7,17 @@
   height: 1.25rem;
   margin-right: 1rem;
 }
+
+.list-group-item {
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.5s, border-left 0.5s;
+
+  &:hover,
+  &.active {
+    background-color: var(--light);
+    border-left: 4px solid var(--primary);
+    color: var(--body-color);
+    transition: background-color 0.5s, border-left 0.5s;
+  }
+}

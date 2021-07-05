@@ -1,6 +1,10 @@
+@import "/src/styles/utilities";
+
 .header {
+  margin-bottom: 1rem;
+
   &__link {
-    img {
+    embed {
       width: 9rem;
     }
   }
@@ -13,7 +17,7 @@
 
     .navigation {
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 2px !important;
 
       ul {
         margin-bottom: 0;
@@ -24,26 +28,8 @@
           & .navigation__link {
             color: var(--body-color);
             position: relative;
-            padding-bottom: 4px;
 
-            &::after {
-              content: " ";
-              position: absolute;
-              left: 0;
-              bottom: 0;
-              height: 2px;
-              width: 100%;
-              max-width: 0%;
-              background-color: var(--primary);
-              transition: max-width 0.5s;
-            }
-
-            &:hover,
-            &.active {
-              &::after {
-                max-width: 100%;
-              }
-            }
+            @include underline;
           }
         }
       }

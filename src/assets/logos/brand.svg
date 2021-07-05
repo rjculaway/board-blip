@@ -1,4 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1053" height="259" viewBox="0 0 1053 259">
-  <text id="BoardBlip" transform="translate(0 24)" fill="#333434" font-size="235" font-family="Helvetica-Light, Helvetica" font-weight="300"><tspan x="6.328" y="181">BoardBlip</tspan></text>
-  <circle id="Ellipse_8" data-name="Ellipse 8" cx="34.5" cy="34.5" r="34.5" transform="translate(849)" fill="#57af92"/>
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="184" viewBox="0 0 840 184">
+
+<style>
+  @font-face { 
+    font-family: "Less"; 
+    src: url(../fonts/Less.otf) format("opentype"); 
+  }
+</style>
+  <text id="board_blip" data-name="board blip" transform="translate(420 142)" fill="#617daf" font-size="150" font-family="LessRegular, Less"><tspan x="-419.775" y="0">board blip</tspan></text>
+  <ellipse id="Ellipse_1" data-name="Ellipse 1" cx="19.5" cy="18" rx="19.5" ry="18" transform="translate(684)" fill="#5eb39b"/>
 </svg>

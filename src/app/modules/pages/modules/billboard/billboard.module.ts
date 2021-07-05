@@ -1,21 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
-import { BillboardRoutingModule } from './billboard-routing.module';
-import { BillboardComponent } from './billboard.component';
-import { SharedModule } from '@shared/shared.module';
-import { BillboardListComponent } from './components/billboard-list/billboard-list.component';
+import { SharedModule } from "@shared/shared.module";
 
+import { BillboardRoutingModule } from "./billboard-routing.module";
+import { BillboardComponent } from "./billboard.component";
+import { BillboardListComponent } from "./components/billboard-list/billboard-list.component";
+import { BillboardFormComponent } from "./components/billboard-form/billboard-form.component";
 
 @NgModule({
   declarations: [
     BillboardComponent,
-    BillboardListComponent
+    BillboardListComponent,
+    BillboardFormComponent
   ],
-  imports: [
-    CommonModule,
-    BillboardRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, BillboardRoutingModule, SharedModule]
 })
-export class BillboardModule { }
+export class BillboardModule {}

@@ -1,4 +1,4 @@
 export enum BillboardType {
-  Digital = "assets/icons/digital-billboard.svg",
+  Electronic = "assets/icons/electronic-billboard.svg",
   Traditional = "assets/icons/traditional-billboard.svg"
 }

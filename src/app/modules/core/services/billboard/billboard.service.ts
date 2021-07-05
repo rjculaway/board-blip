@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import {
   AngularFirestore,
-  AngularFirestoreCollection
+  AngularFirestoreCollection,
+  AngularFirestoreDocument
 } from "@angular/fire/firestore";
 
 import { Billboard } from "@interfaces/billboard";
@@ -11,10 +12,14 @@ import { Billboard } from "@interfaces/billboard";
 })
 export class BillboardService {
   private readonly collection = "/billboards";
-  billboards: AngularFirestoreCollection<Billboard>;
+  private billboards: AngularFirestoreCollection<Billboard>;
 
   constructor(private db: AngularFirestore) {
     this.billboards = db.collection(this.collection);
+  }
+
+  getById(id: string): AngularFirestoreDocument<Billboard> {
+    return this.billboards.doc(id);
   }
 
   getAll(): AngularFirestoreCollection<Billboard> {

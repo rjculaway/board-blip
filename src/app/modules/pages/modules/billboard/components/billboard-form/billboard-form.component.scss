@@ -1,0 +1,65 @@
+@import "/src/styles/utilities";
+
+.form-control-plaintext {
+  font-size: inherit;
+}
+
+img {
+  width: 4rem;
+}
+
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked,
+  &:hover {
+    + div {
+      filter: brightness(100%);
+
+      & span {
+        opacity: 1;
+      }
+    }
+  }
+
+  & + div {
+    cursor: pointer;
+    border-radius: 100%;
+    padding: 1rem;
+    filter: brightness(80%);
+    transition: filter 0.5s;
+    color: var(--font-color);
+
+    & span {
+      opacity: 0.7;
+      transition: opacity 0.5s;
+      position: relative;
+    }
+  }
+}
+
+.images {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  [type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    & + div {
+      border: 1px solid var(--light);
+      height: 7rem;
+      width: 7rem;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: transparent;
+    }
+  }
+}
