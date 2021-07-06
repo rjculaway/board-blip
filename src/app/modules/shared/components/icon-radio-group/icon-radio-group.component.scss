@@ -1,0 +1,49 @@
+@import "/src/styles/utilities";
+
+label {
+  cursor: pointer !important;
+  width: 10rem;
+  align-items: center;
+  margin-right: 1rem;
+  border: 1px solid $light;
+  transition: border-color 0.5s;
+
+  &:hover,
+  &.active {
+    border-color: $info;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked,
+  &:hover {
+    + div {
+      filter: opacity(1) brightness(100%);
+    }
+  }
+
+  & + div {
+    border-radius: 100%;
+    filter: opacity(0.8) brightness(80%);
+    transition: filter 0.5s;
+    color: var(--font-color);
+
+    & span {
+      position: relative;
+    }
+  }
+}
+
+img {
+  max-width: 3rem;
+  max-height: 3rem;
+}

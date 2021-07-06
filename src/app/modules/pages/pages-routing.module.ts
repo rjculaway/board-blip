@@ -20,13 +20,12 @@ const routes: Routes = [
         path: "billboard",
         loadChildren: () =>
           import("@billboard/billboard.module").then(m => m.BillboardModule)
-      },
-      {
-        path: "**",
-        pathMatch: "full",
-        redirectTo: "home"
       }
     ]
+  },
+  {
+    path: "**",
+    component: PagesComponent
   }
 ];
 

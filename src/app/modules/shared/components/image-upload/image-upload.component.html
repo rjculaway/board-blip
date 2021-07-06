@@ -1,0 +1,12 @@
+<div class="d-flex" [formGroup]="group">
+  <label>
+    <input type="hidden" [formControlName]="config.name" />
+    <input type="file" (change)="onFileChange($event)" />
+    <div
+      class="d-flex align-items-center justify-content-center"
+      [ngClass]="{ default: isDefaultImage }"
+    >
+      <img [src]="imagePath" />
+    </div>
+  </label>
+</div>

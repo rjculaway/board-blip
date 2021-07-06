@@ -24,6 +24,7 @@
 
         & li {
           margin-right: 3rem;
+          cursor: pointer !important;
 
           & .navigation__link {
             color: var(--body-color);

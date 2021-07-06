@@ -1,0 +1,31 @@
+@import "/src/styles/variables";
+
+[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  & + div {
+    cursor: pointer;
+    height: 8rem;
+    width: 10rem;
+    background: transparent;
+    border: 1px solid $light;
+    overflow: hidden;
+
+    & img {
+      height: auto;
+      width: 120%;
+    }
+
+    &.default {
+      background: $info;
+      border-color: $info;
+
+      & img {
+        width: 3rem;
+      }
+    }
+  }
+}

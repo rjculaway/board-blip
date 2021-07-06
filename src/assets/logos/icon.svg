@@ -1,19 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="310" height="293" viewBox="0 0 310 293">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="257" height="243" viewBox="0 0 257 243">
   <defs>
     <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#5eb39b"/>
-      <stop offset="1" stop-color="#617daf"/>
+      <stop offset="0" stop-color="#617daf"/>
+      <stop offset="1" stop-color="#5eb39b"/>
     </linearGradient>
-    <clipPath id="clip-path">
-      <rect x="-64" y="12" width="260" height="293" fill="none"/>
-    </clipPath>
   </defs>
-  <g id="Group_2" data-name="Group 2" transform="translate(-805 -394)">
-    <g id="Group_1" data-name="Group 1">
-      <ellipse id="Ellipse_2" data-name="Ellipse 2" cx="155" cy="146.5" rx="155" ry="146.5" transform="translate(805 394)" fill="url(#linear-gradient)"/>
-      <g id="Scroll_Group_1" data-name="Scroll Group 1" transform="translate(894 382)" clip-path="url(#clip-path)" style="isolation: isolate">
-        <text id="B" transform="translate(73 247)" fill="#f0efef" font-size="247" font-family="'Moon2\.0-Regular', 'Moon \32 \.0'"><tspan x="-72.989" y="0">B</tspan></text>
-      </g>
-    </g>
-  </g>
+  <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="128.5" cy="121.5" rx="128.5" ry="121.5" fill="url(#linear-gradient)"/>
+  <text id="b" transform="translate(85 44)" fill="#f0efef" font-size="169" font-family="LessRegular, Less"><tspan x="0.216" y="148">b</tspan></text>
 </svg>

@@ -13,10 +13,18 @@ const routes: Routes = [
         component: BillboardFormComponent
       },
       {
-        path: ":id",
+        path: ":id/details",
+        component: BillboardFormComponent
+      },
+      {
+        path: "**",
         component: BillboardFormComponent
       }
     ]
+  },
+  {
+    path: "**",
+    component: BillboardComponent
   }
 ];
 

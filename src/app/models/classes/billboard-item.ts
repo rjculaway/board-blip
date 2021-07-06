@@ -1,12 +1,16 @@
 import { Billboard } from "@interfaces/billboard";
 import { BillboardType } from "@enums/billboard-type";
+import { Geopoint } from "@interfaces/geopoint";
 
 export class BillboardItem implements Billboard {
   id: string;
   name: string;
+  client: string;
   isElectronic: boolean;
-  locations: Array<Location>;
+  location: Geopoint;
   images: string[];
+  publishDate: Date;
+  duration: number;
 
   type: BillboardType;
   locationCount: number;
@@ -14,15 +18,21 @@ export class BillboardItem implements Billboard {
   constructor({
     id,
     name,
+    client,
     isElectronic,
-    locations,
-    images
+    location,
+    images,
+    publishDate,
+    duration
   }: Billboard) {
     this.id = id;
     this.name = name;
+    this.client = client;
     this.isElectronic = isElectronic;
-    this.locations = locations;
+    this.location = location;
     this.images = images;
+    this.publishDate = publishDate;
+    this.duration = duration;
 
     this.setBillboardType();
     this.setLocationCount();
@@ -35,6 +45,6 @@ export class BillboardItem implements Billboard {
   }
 
   private setLocationCount() {
-    this.locationCount = this.locations.length;
+    // this.locationCount = this.locations.length;
   }
 }

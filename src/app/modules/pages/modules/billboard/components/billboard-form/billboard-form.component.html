@@ -1,47 +1,169 @@
 <div
-  class="min-box-height"
+  class="min-box-height pt-0 pb-3 px-3"
   [ngClass]="{ 'd-flex justify-content-center align-items-center': !billboard }"
 >
   <ng-container *ngIf="billboard; else createBillboard">
+    <button type="button" class="btn btn-primary rounded-0" (click)="save()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M21.03 5.72a.75.75 0 010 1.06l-11.5 11.5a.75.75 0 01-1.072-.012l-5.5-5.75a.75.75 0 111.084-1.036l4.97 5.195L19.97 5.72a.75.75 0 011.06 0z"
+        ></path>
+      </svg>
+    </button>
+
     <div [formGroup]="formGroup">
-      <h3 class="display-4">
-        <input
-          type="text"
-          class="form-control-plaintext text-center"
-          formControlName="name"
-          placeholder="Name your billboard"
-        />
-      </h3>
-
-      <div class="d-flex justify-content-center">
-        <label>
-          <input type="radio" [value]="false" formControlName="isElectronic" />
-          <div class="d-flex align-items-center">
-            <span class="mr-3 d-none d-sm-block">Traditional Billboard</span>
-            <img [src]="traditionalBillboard" />
-          </div>
-        </label>
-
-        <label>
-          <input type="radio" [value]="true" formControlName="isElectronic" />
-          <div class="d-flex align-items-center">
-            <img [src]="electronicBillboard" />
-            <span class="ml-3 d-none d-sm-block">Electronic Billboard</span>
-          </div>
-        </label>
+      <div class="row">
+        <div class="col-12">
+          <h1>
+            <input
+              type="text"
+              class="form-control-plaintext text-center"
+              formControlName="name"
+              placeholder="Name your billboard"
+            />
+          </h1>
+        </div>
       </div>
 
-      <div class="images" formArrayName="images">
-        <ng-container
-          *ngFor="let image of images.controls; index as imageIndex"
-        >
-          <label>
-            <input type="hidden" [formControlName]="imageIndex" />
-            <input type="file" />
-            <div [style.background-image]="'url(' + image.value + ')'"></div>
-          </label>
-        </ng-container>
+      <div class="row">
+        <div class="col-12 divider-hb">
+          <div class="d-flex justify-content-center py-2">
+            <app-icon-radio-group
+              [group]="formGroup"
+              [config]="radioGroupConfig"
+            >
+            </app-icon-radio-group>
+          </div>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="row pt-2">
+            <div class="col-12">
+              <div class="d-flex align-items-center">
+                <h5>
+                  Basic Info
+                </h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-12">
+              <label for="client">Client Name</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="client"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="client">Publish Date</label>
+              <input
+                class="form-control form-control-sm"
+                ngbDatepicker
+                formControlName="publishDate"
+                #d="ngbDatepicker"
+                readonly
+                (click)="d.toggle()"
+              />
+            </div>
+            <div class="form-group col-6">
+              <label for="client">Duration</label>
+              <div class="input-group input-group-sm">
+                <input
+                  type="number"
+                  class="form-control form-control-sm"
+                  formControlName="duration"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text">days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12 divider-vl">
+          <div class="row pt-2">
+            <div class="col-12">
+              <div class="d-flex align-items-center">
+                <h5>
+                  Location
+                </h5>
+                <small class="ml-1 text-muted"
+                  >Click anywhere on the map to pin location
+                </small>
+              </div>
+            </div>
+          </div>
+          <div formGroupName="location" class="form-row">
+            <div class="form-group col-6">
+              <label for="latitude">Latitude</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="latitude"
+                readonly
+              />
+            </div>
+            <div class="form-group  col-6">
+              <label for="longitude">Longitude</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="longitude"
+                readonly
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <app-google-maps
+                (addMarkerEvent)="addLocation($event)"
+                [markers]="mapMarkers"
+                [height]="250"
+              ></app-google-maps>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row divider-ht">
+        <div class="col-sm-12 ">
+          <div class="d-flex flex-column">
+            <div class=" mb-2 pt-1">
+              <small class="text-muted">
+                Click the thumbnail to open the file explorer and upload an
+                image.
+              </small>
+            </div>
+            <div class="images pb-1" formArrayName="images">
+              <ng-container
+                *ngFor="let image of images.controls; index as imageIndex"
+              >
+                <app-image-upload
+                  [config]="imageUploadConfig[imageIndex]"
+                  [group]="imageFormGroup"
+                >
+                </app-image-upload>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <app-google-maps
+            (addMarkerEvent)="addLocation($event)"
+          ></app-google-maps>
+        </div>
+      </div> -->
     </div>
   </ng-container>
 
