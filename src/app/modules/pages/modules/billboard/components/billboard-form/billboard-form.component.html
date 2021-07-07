@@ -54,20 +54,8 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-12 divider-hb">
-          <div class="d-flex justify-content-center py-2">
-            <app-icon-radio-group
-              [group]="formGroup"
-              [config]="radioGroupConfig"
-            >
-            </app-icon-radio-group>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-6 col-sm-12">
+      <div class="row divider-hb">
+        <div class="col-md-4 col-sm-12">
           <div class="row pt-2">
             <div class="col-12">
               <div class="d-flex align-items-center">
@@ -118,8 +106,19 @@
               </div>
             </div>
           </div>
+          <div class="row divider-ht">
+            <div class="col-12">
+              <div class="d-flex py-3">
+                <app-icon-radio-group
+                  [group]="formGroup"
+                  [config]="radioGroupConfig"
+                >
+                </app-icon-radio-group>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-sm-12 divider-vl">
+        <div class="col-md-8 col-sm-12 divider-vl">
           <div class="row pt-2">
             <div class="col-12">
               <div class="d-flex align-items-center">
@@ -157,20 +156,20 @@
               <app-google-maps
                 (addMarkerEvent)="addLocation($event)"
                 [markers]="mapMarkers"
-                [height]="250"
+                [height]="240"
               ></app-google-maps>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- <div class="row divider-ht">
+      <div class="row">
         <div class="col-sm-12 ">
           <div class="d-flex flex-column">
             <div class=" mb-2 pt-1">
               <small class="text-muted">
                 Click the thumbnail to open the file explorer and upload an
-                image.
+                image. Accepts images in <b>.jpg</b> or <b>.png</b> format.
               </small>
             </div>
             <div class="images pb-1" formArrayName="images">
@@ -186,13 +185,7 @@
             </div>
           </div>
         </div>
-
-        <div class="col-sm-12">
-          <app-google-maps
-            (addMarkerEvent)="addLocation($event)"
-          ></app-google-maps>
-        </div>
-      </div> -->
+      </div>
     </div>
   </ng-container>
 </div>

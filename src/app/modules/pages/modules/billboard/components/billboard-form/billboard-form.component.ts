@@ -71,6 +71,8 @@ export class BillboardFormComponent implements OnInit {
       latitude,
       longitude
     });
+
+    this.formGroup.markAsDirty();
   }
 
   create() {
@@ -186,7 +188,7 @@ export class BillboardFormComponent implements OnInit {
   private initImages(data?: Array<string>) {
     this.images = new FormArray([]);
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 5; i++) {
       const slide = data && data[i] ? data[i] : null;
 
       this.imageUploadConfig.push({ name: i.toString() });

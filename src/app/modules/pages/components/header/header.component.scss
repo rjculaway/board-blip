@@ -3,12 +3,12 @@
 .header {
   margin-bottom: 1rem;
 
-  &__link {
+  &-link {
     embed {
       width: 9rem;
     }
   }
-  &__content {
+  &-content {
     height: 80px;
     display: flex;
     width: 100%;
@@ -26,11 +26,15 @@
           margin-right: 3rem;
           cursor: pointer !important;
 
-          & .navigation__link {
+          & .navigation-link {
             color: var(--body-color);
             position: relative;
 
             @include underline;
+          }
+
+          &:last-of-type {
+            margin-right: 0;
           }
         }
       }
