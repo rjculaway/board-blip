@@ -28,7 +28,14 @@
         <small>{{ billboard.client }}</small>
       </div>
     </div>
-    <span *ngIf="billboard.isPinned" class="material-icons pin">
+    <span
+      *ngIf="billboard.isPinned"
+      class="material-icons pin"
+      placement="top"
+      ngbTooltip="Lat:{{ billboard.location?.latitude }} Lng:{{
+        billboard.location?.longitude
+      }}"
+    >
       location_on
     </span>
   </div>
