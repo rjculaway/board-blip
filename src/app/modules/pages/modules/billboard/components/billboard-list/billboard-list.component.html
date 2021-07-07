@@ -10,7 +10,7 @@
     placeholder="Search by billboard name or company"
     [(ngModel)]="filterString"
     (ngModelChange)="search()"
-    [disabled]="!filteredBillboards || filteredBillboards.length === 0"
+    [disabled]="!billboards || billboards.length === 0"
   />
 </div>
 
