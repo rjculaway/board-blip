@@ -1,0 +1,9 @@
+<ngb-toast
+  *ngFor="let toast of toasts"
+  [autohide]="true"
+  [delay]="5000"
+  [class]="toast.class"
+  (hide)="clear()"
+>
+  {{ toast.message }}
+</ngb-toast>

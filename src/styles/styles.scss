@@ -18,6 +18,27 @@ body {
     &:focus-visible {
       outline: none !important;
     }
+
+    &.form-control {
+      border: none;
+      border-bottom: 1px solid $light;
+
+      &:read-only {
+        cursor: default;
+      }
+
+      &:focus {
+        border-bottom-color: $info;
+      }
+
+      &.is-invalid {
+        border-bottom-color: $danger;
+
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
   }
 }
 
@@ -37,6 +58,13 @@ button {
   text-transform: uppercase;
 }
 
-.form-control-plaintext {
-  border-bottom: 1px solid var(--light);
+label,
+span {
+  &.required {
+    &::after {
+      content: "*";
+      color: $danger;
+      font-size: 1rem;
+    }
+  }
 }

@@ -13,7 +13,7 @@ export class BillboardItem implements Billboard {
   duration: number;
 
   type: BillboardType;
-  locationCount: number;
+  isPinned: boolean;
 
   constructor({
     id,
@@ -35,7 +35,7 @@ export class BillboardItem implements Billboard {
     this.duration = duration;
 
     this.setBillboardType();
-    this.setLocationCount();
+    this.setIsPinned();
   }
 
   private setBillboardType() {
@@ -44,7 +44,11 @@ export class BillboardItem implements Billboard {
       : BillboardType.Traditional;
   }
 
-  private setLocationCount() {
-    // this.locationCount = this.locations.length;
+  private setIsPinned() {
+    const { longitude, latitude } = this.location;
+
+    if (longitude || latitude) {
+      this.isPinned = true;
+    }
   }
 }

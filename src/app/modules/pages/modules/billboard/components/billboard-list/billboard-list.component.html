@@ -7,11 +7,13 @@
   >
     <div class="d-flex align-items-center">
       <img class="billboard-icon" [src]="billboard.type" />
-      <span>{{ billboard.name }}</span>
+      <div class="d-flex flex-column">
+        <span class="name">{{ billboard.name }}</span>
+        <small>{{ billboard.client }}</small>
+      </div>
     </div>
-    <div class="d-flex align-items-center justify-content-between">
-      <img class="map-pin-icon" src="assets/icons/map-pin.svg" />
-      <span>{{ billboard.locationCount }}</span>
-    </div>
+    <span *ngIf="billboard.isPinned" class="material-icons pin">
+      location_on
+    </span>
   </div>
 </div>

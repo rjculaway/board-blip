@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 
+import { ToastService } from "@core/services/toast/toast.service";
 import { BillboardService } from "@core/services/billboard/billboard.service";
 import { BillboardType } from "@enums/billboard-type";
 import { IconRadioGroup } from "@interfaces/icon-radio-group";
@@ -17,7 +18,9 @@ import { MapMarker } from "@interfaces/map-marker";
   styleUrls: ["./billboard-form.component.scss"]
 })
 export class BillboardFormComponent implements OnInit {
-  billboard: Billboard;
+
+ id: string | null;
+  billboard: Billboard | null;
   images: FormArray;
   formGroup: FormGroup;
 
@@ -28,7 +31,6 @@ export class BillboardFormComponent implements OnInit {
   electronicBillboard = BillboardType.Electronic;
   traditionalBillboard = BillboardType.Traditional;
 
-  private id: string;
 
   private routeSubscription$: Subscription;
   private getByIdSubscription$: Subscription;
@@ -36,6 +38,8 @@ export class BillboardFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
+    private toastService: ToastService,
     private billboardService: BillboardService
   ) { }
 
@@ -69,15 +73,52 @@ export class BillboardFormComponent implements OnInit {
     });
   }
 
+  create() {
+    this.resetForm();
+  }
+
   save() {
-    console.log(this.formGroup.value);
     if (this.formGroup.valid) {
       if (this.id) {
-        this.billboardService.update(this.id, this.formGroup.value);
+        this.billboardService.update(this.id, this.formGroup.value)
+        .then(() => {
+          this.toastService.showSuccess('Your billboard has been updated.');
+        })
+        .catch(() => {
+          this.toastService.showError("Oops! We couldn't update your billboard at the moment.");
+        });
       } else {
-        this.billboardService.create(this.formGroup.value);
+        this.billboardService.create(this.formGroup.value).then(({ id }) => {
+          this.id = id;
+          this.toastService.showSuccess('Your billboard has been created.');
+        })
+        .catch(() => {
+          this.toastService.showError("Sorry! We couldn't create your billboard.");
+        });
       }
+    } else {
+
+      this.formGroup.markAsDirty();
+      this.toastService.showError("Oops! Looks like you missed some of the fields");
     }
+  }
+
+  delete() {
+    if (this.id) {
+      this.billboardService.delete(this.id).then(() => {
+        this.toastService.showSuccess('Your billboard has been removed.');
+        this.resetForm();
+      })
+      .catch(() => {
+        this.toastService.showError("Something went wrong. It's our fault!");
+      });
+    }
+  }
+
+  private resetForm() {
+    this.id = null;
+    this.billboard = null;
+    this.formGroup.reset();
   }
 
   private getBillboard() {
@@ -97,30 +138,32 @@ export class BillboardFormComponent implements OnInit {
   }
 
   private initFormGroup() {
-    const data = this.billboard || {};
+    const data = this.billboard;
+    const lng = data?.location?.longitude || 0;
+    const lat = data?.location?.latitude || 0;
 
     const locationFormGroup = this.formBuilder.group({
-      longitude: [data.location?.longitude],
-      latitude: [data.location?.latitude]
+      longitude: [lng],
+      latitude: [lat]
     });
 
     this.formGroup = this.formBuilder.group({
-      name: [data.name, Validators.required],
-      isElectronic: [data.isElectronic, Validators.required],
-      client: [data.client, Validators.required],
-      publishDate: [data.publishDate],
-      duration: [data.duration],
+      name: [data?.name, Validators.required],
+      isElectronic: [data?.isElectronic, Validators.required],
+      client: [data?.client, Validators.required],
+      publishDate: [data?.publishDate],
+      duration: [data?.duration],
       location: locationFormGroup
     });
 
-    this.initImages(data.images);
-    this.initMapMarkers(data.location);
+    this.initImages(data?.images);
+    this.initMapMarkers(data?.location);
     this.initRadioGroupConfig();
 
     this.formGroup.addControl("images", this.images);
   }
 
-  private initMapMarkers(location: Geopoint) {
+  private initMapMarkers(location?: Geopoint) {
     if (!this.mapMarkers) {
       this.mapMarkers = [];
     }
@@ -137,7 +180,7 @@ export class BillboardFormComponent implements OnInit {
     }
   }
 
-  private initImages(data: Array<string>) {
+  private initImages(data?: Array<string>) {
     this.images = new FormArray([]);
 
     for (let i = 0; i < 4; i++) {
@@ -151,6 +194,7 @@ export class BillboardFormComponent implements OnInit {
   private initRadioGroupConfig() {
     this.radioGroupConfig = {
       name: "isElectronic",
+      required: true,
       options: [
         {
           label: "Electronic",

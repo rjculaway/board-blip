@@ -11,5 +11,22 @@ $theme-colors: (
 
 $body-color: $font-color;
 $headings-font-family: $font-monospace;
+
+/********* INPUT ********/
 $border-radius-sm: 0;
+$border-radius: 0;
 $input-border-color: $light;
+$input-btn-focus-box-shadow: none;
+$input-disabled-bg: $light;
+$input-group-addon-bg: transparent;
+$input-group-addon-border-color: transparent;
+
+/********* TOAST ********/
+$toast-border-radius: 0;
+$toast-border-width: 0;
+
+/********* TOOLTIP ********/
+$tooltip-bg: $light;
+$tooltip-color: $body-color;
+$tooltip-font-size: 0.75rem;
+$tooltip-border-radius: 0;

@@ -26,24 +26,6 @@ export class BillboardListComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSort({ column, direction }: any) {
-    // resetting other headers
-    // this.headers.forEach(header => {
-    //   if (header.sortable !== column) {
-    //     header.direction = '';
-    //   }
-    // });
-    // // sorting countries
-    // if (direction === '' || column === '') {
-    //   this.countries = COUNTRIES;
-    // } else {
-    //   this.countries = [...COUNTRIES].sort((a, b) => {
-    //     const res = compare(a[column], b[column]);
-    //     return direction === 'asc' ? res : -res;
-    //   });
-    // }
-  }
-
   private getBillboards(): void {
     this.$getAllBillboardSubscription = this.billboardService
       .getAll()
@@ -54,7 +36,6 @@ export class BillboardListComponent implements OnInit, OnDestroy {
         this.billboards = result.map((item: Billboard) => {
           return new BillboardItem(item);
         });
-        console.log(result);
       });
   }
 }

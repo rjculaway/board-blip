@@ -1,8 +1,10 @@
 <div class="d-flex" [formGroup]="group">
   <ng-container *ngFor="let item of config.options">
     <label
-      class="shadow-sm p-3"
-      [ngClass]="{ active: group.get(config.name)?.value === item.value }"
+      class="shadow-sm py-3 px-3 mb-0"
+      [ngClass]="{
+        active: group.get(config.name)?.value === item.value
+      }"
     >
       <input
         type="radio"
@@ -12,10 +14,15 @@
       <div class="d-flex align-items-center justify-content-center flex-column">
         <img [src]="item.icon" />
 
-        <span class="mt-3 d-none d-sm-block">
+        <span
+          class="mt-2 d-none d-sm-block"
+          [ngClass]="{
+            required: config.required
+          }"
+        >
           {{ item.label }}
         </span>
-        <small class="mt-2 text-muted">
+        <small class="text-muted">
           {{ item.description }}
         </small>
       </div>

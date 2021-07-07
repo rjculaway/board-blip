@@ -1,11 +1,12 @@
+@import "/src/styles/variables";
+
 .billboard-icon {
   width: 1.5rem;
   margin-right: 1rem;
 }
 
-.map-pin-icon {
-  height: 1.25rem;
-  margin-right: 1rem;
+.pin {
+  color: $danger;
 }
 
 .list-group-item {
@@ -16,8 +17,13 @@
   &:hover,
   &.active {
     background-color: var(--light);
+    border-color: rgba(0, 0, 0, 0.125);
     border-left: 4px solid var(--primary);
     color: var(--body-color);
     transition: background-color 0.5s, border-left 0.5s;
+  }
+
+  .name {
+    font-family: $font-monospace;
   }
 }

@@ -1,5 +1,6 @@
 export interface IconRadioGroup {
   name: string;
+  required: boolean;
   options: Array<{
     label: string;
     value: any;
