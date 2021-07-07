@@ -45,12 +45,16 @@ export class BillboardListComponent implements OnInit, OnDestroy {
         debounceTime(500)
       )
       .subscribe(value => {
-        this.filteredBillboards = this.billboards.filter(
-          b =>
-            b.client.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
-            b.name.toLocaleLowerCase().indexOf(value.toLowerCase()) >= 0
-        );
+        this.applyFilter(value);
       });
+  }
+
+  private applyFilter(value: string) {
+    this.filteredBillboards = this.billboards.filter(
+      b =>
+        b.client.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+        b.name.toLocaleLowerCase().indexOf(value.toLowerCase()) >= 0
+    );
   }
 
   private getBillboards(): void {
@@ -64,7 +68,11 @@ export class BillboardListComponent implements OnInit, OnDestroy {
           return new BillboardItem(item);
         });
 
-        this.filteredBillboards = this.billboards;
+        if (this.filterString) {
+          this.applyFilter(this.filterString);
+        } else {
+          this.filteredBillboards = this.billboards;
+        }
       });
   }
 }

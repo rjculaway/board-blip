@@ -22,7 +22,8 @@
               formControlName="name"
               placeholder="Name your billboard"
               [ngClass]="{
-                'is-invalid': formGroup.dirty && formGroup.get('name')?.invalid
+                'is-invalid':
+                  formGroup.get('name')?.dirty && formGroup.get('name')?.invalid
               }"
               [maxlength]="30"
             />
@@ -46,6 +47,7 @@
             (click)="save()"
             placement="top"
             ngbTooltip="Save billboard"
+            [disabled]="formGroup.pristine"
           >
             <span class="material-icons">check</span>
           </button>
@@ -85,7 +87,8 @@
                 formControlName="client"
                 [ngClass]="{
                   'is-invalid':
-                    formGroup.dirty && formGroup.get('client')?.invalid
+                    formGroup.get('client')?.dirty &&
+                    formGroup.get('client')?.invalid
                 }"
                 [maxlength]="20"
               />

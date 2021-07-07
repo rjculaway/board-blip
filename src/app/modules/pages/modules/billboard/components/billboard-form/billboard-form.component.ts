@@ -85,12 +85,12 @@ export class BillboardFormComponent implements OnInit {
           this.toastService.showSuccess('Your billboard has been updated.');
         })
         .catch(() => {
-          this.toastService.showError("Oops! We couldn't update your billboard at the moment.");
+          this.toastService.showError("We couldn't update your billboard at the moment.");
         });
       } else {
-        this.billboardService.create(this.formGroup.value).then(({ id }) => {
-          this.id = id;
+        this.billboardService.create(this.formGroup.value).then(() => {
           this.toastService.showSuccess('Your billboard has been created.');
+          this.resetForm();
         })
         .catch(() => {
           this.toastService.showError("Sorry! We couldn't create your billboard.");
@@ -98,8 +98,11 @@ export class BillboardFormComponent implements OnInit {
       }
     } else {
 
-      this.formGroup.markAsDirty();
-      this.toastService.showError("Oops! Looks like you missed some of the fields");
+      Object.keys(this.formGroup.controls).forEach(key => {
+        this.formGroup.get(key)?.markAsDirty();
+      })
+
+      this.toastService.showError("Oops! Some fields are missing.");
     }
   }
 
@@ -116,9 +119,9 @@ export class BillboardFormComponent implements OnInit {
   }
 
   private resetForm() {
-    this.id = null;
-    this.billboard = null;
     this.formGroup.reset();
+    this.billboard = null;
+    this.router.navigate(['pages/billboard']);
   }
 
   private getBillboard() {
@@ -139,12 +142,12 @@ export class BillboardFormComponent implements OnInit {
 
   private initFormGroup() {
     const data = this.billboard;
-    const lng = data?.location?.longitude || 0;
-    const lat = data?.location?.latitude || 0;
+    const longitude = data?.location?.longitude || 0;
+    const latitude = data?.location?.latitude || 0;
 
     const locationFormGroup = this.formBuilder.group({
-      longitude: [lng],
-      latitude: [lat]
+      longitude: [longitude],
+      latitude: [latitude]
     });
 
     this.formGroup = this.formBuilder.group({
@@ -157,7 +160,7 @@ export class BillboardFormComponent implements OnInit {
     });
 
     this.initImages(data?.images);
-    this.initMapMarkers(data?.location);
+    this.initMapMarkers({ latitude, longitude });
     this.initRadioGroupConfig();
 
     this.formGroup.addControl("images", this.images);
@@ -183,7 +186,7 @@ export class BillboardFormComponent implements OnInit {
   private initImages(data?: Array<string>) {
     this.images = new FormArray([]);
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 2; i++) {
       const slide = data && data[i] ? data[i] : null;
 
       this.imageUploadConfig.push({ name: i.toString() });
