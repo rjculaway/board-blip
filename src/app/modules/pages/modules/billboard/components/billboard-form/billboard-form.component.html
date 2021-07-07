@@ -21,7 +21,9 @@
               class="form-control billboard-name text-center mb-0"
               formControlName="name"
               placeholder="Name your billboard"
-              [ngClass]="{ 'is-invalid': formGroup.dirty && formGroup.invalid }"
+              [ngClass]="{
+                'is-invalid': formGroup.dirty && formGroup.get('name')?.invalid
+              }"
               [maxlength]="30"
             />
           </h1>
@@ -76,13 +78,14 @@
 
           <div class="form-row">
             <div class="form-group col-12">
-              <label class="required" for="client">Client Name</label>
+              <label class="required" for="client">Company</label>
               <input
                 type="text"
                 class="form-control form-control-sm"
                 formControlName="client"
                 [ngClass]="{
-                  'is-invalid': formGroup.dirty && formGroup.invalid
+                  'is-invalid':
+                    formGroup.dirty && formGroup.get('client')?.invalid
                 }"
                 [maxlength]="20"
               />

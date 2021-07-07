@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Subject, Subscription } from "rxjs";
+import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 
 import { BillboardService } from "@core/services/billboard/billboard.service";
 import { BillboardItem } from "@classes/billboard-item";
@@ -12,11 +13,18 @@ import { Billboard } from "@interfaces/billboard";
 })
 export class BillboardListComponent implements OnInit, OnDestroy {
   billboards: Array<BillboardItem>;
+  filteredBillboards: Array<BillboardItem>;
+  filterString: string;
+
+  private $filterStringSubject: Subject<string> = new Subject<string>();
+
   private $getAllBillboardSubscription: Subscription;
+  private $subscribeToFilterChange: Subscription;
 
   constructor(private billboardService: BillboardService) {}
 
   ngOnInit(): void {
+    this.subscribeToFilter();
     this.getBillboards();
   }
 
@@ -24,6 +32,25 @@ export class BillboardListComponent implements OnInit, OnDestroy {
     if (this.$getAllBillboardSubscription) {
       this.$getAllBillboardSubscription.unsubscribe();
     }
+  }
+
+  search() {
+    this.$filterStringSubject.next(this.filterString);
+  }
+
+  private subscribeToFilter() {
+    this.$subscribeToFilterChange = this.$filterStringSubject
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(500)
+      )
+      .subscribe(value => {
+        this.filteredBillboards = this.billboards.filter(
+          b =>
+            b.client.toLowerCase().indexOf(value.toLowerCase()) >= 0 ||
+            b.name.toLocaleLowerCase().indexOf(value.toLowerCase()) >= 0
+        );
+      });
   }
 
   private getBillboards(): void {
@@ -36,6 +63,8 @@ export class BillboardListComponent implements OnInit, OnDestroy {
         this.billboards = result.map((item: Billboard) => {
           return new BillboardItem(item);
         });
+
+        this.filteredBillboards = this.billboards;
       });
   }
 }

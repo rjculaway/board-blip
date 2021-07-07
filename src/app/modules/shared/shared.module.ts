@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { GoogleMapsModule } from "@angular/google-maps";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
@@ -15,10 +15,17 @@ import { GoogleMapsComponent } from "./components/google-maps/google-maps.compon
     ImageUploadComponent,
     GoogleMapsComponent
   ],
-  imports: [CommonModule, ReactiveFormsModule, GoogleMapsModule, NgbModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    GoogleMapsModule,
+    NgbModule
+  ],
   exports: [
     GoogleMapsModule,
     NgbModule,
+    FormsModule,
     ReactiveFormsModule,
 
     IconRadioGroupComponent,
