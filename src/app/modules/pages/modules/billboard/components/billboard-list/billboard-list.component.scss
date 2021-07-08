@@ -17,6 +17,7 @@
   border-left: 4px solid transparent;
   cursor: pointer;
   transition: background-color 0.5s, border-left 0.5s;
+  z-index: 1;
 
   &:hover,
   &.active {

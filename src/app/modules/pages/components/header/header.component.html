@@ -1,31 +1,33 @@
-<header>
-  <div class="header-content">
-    <a class="header-link" href="/">
-      <embed type="image/svg+xml" src="assets/logos/brand.svg" />
-    </a>
-    <div class="d-none d-md-block align-self-center">
-      <nav class="navigation">
-        <ul>
-          <li class="d-inline-block">
-            <a
-              class="navigation-link"
-              routerLinkActive="active"
-              [routerLink]="['home']"
-            >
-              Home
-            </a>
-          </li>
-          <li class="d-inline-block">
-            <a
-              class="navigation-link"
-              routerLinkActive="active"
-              [routerLink]="['billboard']"
-            >
-              Billboards
-            </a>
-          </li>
-        </ul>
-      </nav>
+<div class="container-fluid">
+  <header>
+    <div class="header-content">
+      <a class="header-link" href="/">
+        <embed type="image/svg+xml" src="assets/logos/brand.svg" />
+      </a>
+      <div class="d-none d-md-block align-self-center">
+        <nav class="navigation">
+          <ul class="list-unstyled">
+            <li class="d-inline-block">
+              <a
+                class="navigation-link"
+                routerLinkActive="active"
+                [routerLink]="['home']"
+              >
+                Home
+              </a>
+            </li>
+            <li class="d-inline-block">
+              <a
+                class="navigation-link"
+                routerLinkActive="active"
+                [routerLink]="['billboard']"
+              >
+                Billboards
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
+</div>

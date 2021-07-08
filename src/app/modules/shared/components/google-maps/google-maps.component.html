@@ -5,6 +5,11 @@
   width="100%"
   [height]="mapHeight"
 >
-  <map-marker *ngFor="let marker of markers" [position]="marker.position">
+  <map-marker
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="getLabel(marker.label)"
+    [title]="marker.title || ''"
+  >
   </map-marker>
 </google-map>

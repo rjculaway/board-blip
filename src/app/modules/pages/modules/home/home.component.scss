@@ -1,0 +1,9 @@
+@import "/src/styles/variables";
+
+.home-container {
+  background: linear-gradient(180deg, $light 50%, transparent 50%);
+}
+
+.display-5 {
+  color: $primary;
+}

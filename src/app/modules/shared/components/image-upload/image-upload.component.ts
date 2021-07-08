@@ -14,11 +14,14 @@ export class ImageUploadComponent implements OnInit {
   @Input() config: ImageUpload;
   @Input() group: FormGroup;
 
+  hasImage: boolean;
   private acceptedTypes = ["image/png", "image/jpeg"];
 
   constructor(private toastService: ToastService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.hasImage = true;
+  }
 
   onFileChange(event: any) {
     const files = event.target.files;
@@ -44,9 +47,15 @@ export class ImageUploadComponent implements OnInit {
     }
   }
 
+  onImageLoadError() {
+    this.hasImage = false;
+  }
+
   get imagePath() {
     const formControl = this.getFormControl();
-    const path = formControl!.value || IconPath.ImageGallery;
+    const path = formControl!.value;
+
+    this.hasImage = path;
 
     return path;
   }

@@ -20,12 +20,17 @@
     }
 
     &.default {
-      background: $info;
-      border-color: $info;
+      background: $light;
+      border-color: $light;
 
       & img {
         width: 3rem;
       }
     }
   }
+}
+
+.img-icon {
+  font-size: 3rem;
+  color: $info;
 }

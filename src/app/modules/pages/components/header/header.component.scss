@@ -1,41 +1,45 @@
 @import "/src/styles/utilities";
 @import "/src/styles/variables";
 
-.header {
-  margin-bottom: 1rem;
+.container-fluid {
+  background: $light;
 
-  &-link {
-    embed {
-      width: 9rem;
+  .header {
+    margin-bottom: 1rem;
+
+    &-link {
+      embed {
+        width: 9rem;
+      }
     }
-  }
-  &-content {
-    height: 80px;
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+    &-content {
+      height: 80px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
 
-    .navigation {
-      text-transform: uppercase;
-      letter-spacing: 2px !important;
+      .navigation {
+        text-transform: uppercase;
+        letter-spacing: 2px !important;
 
-      ul {
-        margin-bottom: 0;
+        ul {
+          margin-bottom: 0;
 
-        & li {
-          margin-right: 3rem;
-          cursor: pointer !important;
+          & li {
+            margin-right: 3rem;
+            cursor: pointer !important;
 
-          & .navigation-link {
-            color: $font-color;
-            position: relative;
+            & .navigation-link {
+              color: $font-color;
+              position: relative;
 
-            @include underline;
-          }
+              @include underline;
+            }
 
-          &:last-of-type {
-            margin-right: 0;
+            &:last-of-type {
+              margin-right: 0;
+            }
           }
         }
       }

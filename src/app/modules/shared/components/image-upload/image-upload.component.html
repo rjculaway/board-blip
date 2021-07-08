@@ -6,7 +6,14 @@
       class="d-flex align-items-center justify-content-center"
       [ngClass]="{ default: isDefaultImage }"
     >
-      <img [src]="imagePath" />
+      <ng-container *ngIf="hasImage; else icon">
+        <img [src]="imagePath" (error)="onImageLoadError()" />
+      </ng-container>
+      <ng-template #icon>
+        <span class="material-icons-outlined img-icon">
+          image
+        </span>
+      </ng-template>
     </div>
   </label>
 </div>

@@ -42,11 +42,6 @@ body {
   }
 }
 
-ul,
-ol {
-  list-style: none;
-}
-
 a {
   &:hover {
     text-decoration: none;
@@ -55,7 +50,6 @@ a {
 
 button {
   letter-spacing: 2px;
-  text-transform: uppercase;
 }
 
 label,
@@ -67,4 +61,11 @@ span {
       font-size: 1rem;
     }
   }
+}
+
+.marker-label {
+  background: $info;
+  margin-bottom: 4rem;
+  padding: 0.25rem;
+  opacity: 0.75;
 }

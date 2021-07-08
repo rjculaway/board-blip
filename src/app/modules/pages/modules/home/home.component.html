@@ -1,1 +1,34 @@
-<p>home works!</p>
+<div class="home-container py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div
+          class="d-flex flex-column align-items-start justify-content-between py-3"
+        >
+          <ng-container>
+            <h1 class="display-5">create. pin. locate.</h1>
+            <ul class="list-unstyled lead">
+              <li>Create a billboard ad campaign.</li>
+              <li>Pin their locations.</li>
+              <li>Find them in the map.</li>
+            </ul>
+          </ng-container>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg rounded-0 text-white"
+            [routerLink]="['../billboard']"
+          >
+            Get started
+          </button>
+        </div>
+      </div>
+      <div class="col-8">
+        <app-google-maps
+          [markers]="blips"
+          [canAddMarker]="false"
+          [height]="500"
+        ></app-google-maps>
+      </div>
+    </div>
+  </div>
+</div>

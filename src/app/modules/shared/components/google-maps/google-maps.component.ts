@@ -8,6 +8,7 @@ import { MapMarker } from "@interfaces/map-marker";
   styleUrls: ["./google-maps.component.scss"]
 })
 export class GoogleMapsComponent implements OnInit {
+  @Input() canAddMarker: boolean = true;
   @Input() markers: Array<MapMarker>;
   @Input() height: number;
   @Output() addMarkerEvent: EventEmitter<Geopoint> = new EventEmitter<
@@ -42,12 +43,26 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   click({ latLng }: google.maps.MouseEvent) {
-    const lat = latLng.lat();
-    const lng = latLng.lng();
+    if (this.canAddMarker) {
+      const lat = latLng.lat();
+      const lng = latLng.lng();
 
-    this.markers = [];
-    this.addMarker(lat, lng);
-    this.addMarkerEvent.emit({ latitude: lat, longitude: lng });
+      this.markers = [];
+
+      this.addMarker(lat, lng);
+      this.addMarkerEvent.emit({ latitude: lat, longitude: lng });
+    }
+  }
+
+  getLabel(label?: string): any {
+    if (label) {
+      return {
+        className: "marker-label",
+        text: label || ""
+      };
+    }
+
+    return label;
   }
 
   private addMarker(lat: number, lng: number) {
