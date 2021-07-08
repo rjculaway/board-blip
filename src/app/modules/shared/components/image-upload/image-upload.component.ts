@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { FormGroup, AbstractControl, FormControl } from "@angular/forms";
+import { FormGroup, AbstractControl } from "@angular/forms";
 
 import { ImageUpload } from "@interfaces/image-upload";
-import { IconPath } from "@enums/icon-path";
 import { ToastService } from "@core/services/toast/toast.service";
 
 @Component({
